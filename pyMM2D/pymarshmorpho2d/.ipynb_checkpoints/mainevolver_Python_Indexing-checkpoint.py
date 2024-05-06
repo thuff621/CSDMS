@@ -906,13 +906,12 @@ class pymm2d(Component):
 
                 # # calculate ponding.  Originally this is calculated at the first step.
                 # self.update_ponding(dt)
-
-                if roughness !=None:
-                    # vegetation
-                    self.update_vegetation(round)
-                    
-                    # roughness
-                    self.update_roughness()
+                #
+                # # vegetation
+                # self.update_vegetation(round)
+                #
+                # # roughness
+                # self.update_roughness()
 
                 # roughness will come simply from a hyperparameter.
 
