@@ -177,11 +177,11 @@ class pymm2d(Component):
 
         # apply roughness through hyperparameter
         from landlab.grid.raster_mappers import map_mean_of_links_to_node
-        if roughness != None:
+        if roughness.any() != None:
             self._roughness = map_mean_of_links_to_node(grid, roughness)
 
         # Set parameter values
-        self._mean_sea_level = 0  # m NAVD88
+        self._mean_sea_level = -0.122 # m NAVD88
         self._elev_relative_to_MSL = self._elev - self._mean_sea_level
         self._rel_sl_rise_rate = rel_sl_rise_rate
         self._tidal_range = tidal_range
@@ -906,12 +906,14 @@ class pymm2d(Component):
 
                 # # calculate ponding.  Originally this is calculated at the first step.
                 # self.update_ponding(dt)
-                #
-                # # vegetation
-                # self.update_vegetation(round)
-                #
-                # # roughness
-                # self.update_roughness()
+
+                if roughness.any() !=None:
+                    # vegetation
+                    self.update_vegetation(round)
+
+                    
+                    # roughness
+                    self.update_roughness()
 
                 # roughness will come simply from a hyperparameter.
 

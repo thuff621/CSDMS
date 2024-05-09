@@ -177,7 +177,7 @@ class pymm2d(Component):
 
         # apply roughness through hyperparameter
         from landlab.grid.raster_mappers import map_mean_of_links_to_node
-        if roughness != None:
+        if roughness.any() != None:
             self._roughness = map_mean_of_links_to_node(grid, roughness)
 
         # Set parameter values
@@ -907,9 +907,10 @@ class pymm2d(Component):
                 # # calculate ponding.  Originally this is calculated at the first step.
                 # self.update_ponding(dt)
 
-                if roughness !=None:
+                if roughness.any() !=None:
                     # vegetation
                     self.update_vegetation(round)
+
                     
                     # roughness
                     self.update_roughness()
